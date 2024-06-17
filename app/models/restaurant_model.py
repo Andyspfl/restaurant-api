@@ -1,4 +1,5 @@
 from app.database import db
+from sqlalchemy.orm import Session
 
 # Define la clase `Restaurant` que hereda de `db.Model`
 # `Restaurant` representa la tabla `restaurants` en la base de datos
@@ -36,7 +37,8 @@ class Restaurant(db.Model):
     # Obtiene un restaurante por su ID
     @staticmethod
     def get_by_id(id):
-        return Restaurant.query.get(id)
+        session: Session = db.session
+        return session.get(Restaurant, id)
 
     # Actualiza un restaurante en la base de datos
     def update(self, name=None, address=None, city=None, phone=None, description=None, rating=None):

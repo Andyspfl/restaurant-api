@@ -42,7 +42,7 @@ app.register_blueprint(reservation_bp, url_prefix="/api")
 app.register_blueprint(restaurant_bp, url_prefix="/api")
 
 # Aplica CORS a toda la aplicación
-CORS(app, resources={r"/api/*": {"origins": "https://hammerhead-app-h4qmk.ondigitalocean.app"}})
+CORS(app)
 
 # Crea las tablas si no existen
 with app.app_context():

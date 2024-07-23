@@ -6,6 +6,7 @@ from app.controllers.user_controller import user_bp
 from app.controllers.reservation_controller import reservation_bp
 from app.controllers.restaurant_controller import restaurant_bp
 from app.database import db
+from flask_cors import CORS  # Importa CORS
 
 app = Flask(__name__)
 
@@ -39,6 +40,9 @@ jwt = JWTManager(app)
 app.register_blueprint(user_bp, url_prefix="/api")
 app.register_blueprint(reservation_bp, url_prefix="/api")
 app.register_blueprint(restaurant_bp, url_prefix="/api")
+
+# Aplica CORS a toda la aplicación
+CORS(app)
 
 # Crea las tablas si no existen
 with app.app_context():
